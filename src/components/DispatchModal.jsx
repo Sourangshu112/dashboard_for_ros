@@ -30,7 +30,7 @@ export default function DispatchModal({ onClose, socket, setTasks }) {
         pickup: taskForm.pickup,
         drop: taskForm.drop,
         priority: taskForm.priority,
-        status: 'Bidding',
+        status: 'Queued',
         bids: {},
         assignedTo: null
       }

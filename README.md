@@ -1,16 +1,21 @@
-# React + Vite
+# React Package Setup
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the project! Follow these quick steps to get the React development environment up and running on your local machine.
 
-Currently, two official plugins are available:
+## Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+To set up and run this package, open your terminal in the project directory and execute the following commands in order:
 
-## React Compiler
+### 1. Install Dependencies
+First, install all the required packages and dependencies:
+```bash
+npm i
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 2. Start the Development Server
+Once the installation is complete, start the local development server:
+```bash
+npm run dev
+```
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Open your browser and navigate to the local URL provided in the terminal (`http://localhost:5173`) to view the app.

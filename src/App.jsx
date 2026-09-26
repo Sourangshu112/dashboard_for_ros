@@ -7,7 +7,7 @@ import RobotStatus from './components/RobotStatus';
 import DispatchModal from './components/DispatchModal';
 import HistoryModal from './components/HistoryModal';
 
-const socket = io('http://10.221.102.11:5000', { transports: ['websocket', 'polling'] });
+const socket = io('http://localhost:5000', { transports: ['websocket', 'polling'] });
 
 export default function FleetDashboard() {
   const [robots, setRobots] = useState({});
@@ -85,7 +85,7 @@ export default function FleetDashboard() {
         };
       });
     });
-
+    // console.log(robots)
     socket.on('task_bid', (bidData) => {
       setTasks((prevTasks) =>
         prevTasks.map((task) => {
@@ -134,15 +134,25 @@ export default function FleetDashboard() {
 
   return (
     <div className="flex flex-col h-screen bg-slate-100 p-4 gap-4 font-sans">
+      <button onClick={() => {
+        if(window.confirm("Initiate Hardcoded Collision Reroute Demo?")) {
+          socket.emit('trigger_sih_prototype');
+          }
+       }}
+      className="absolute top-4 right-4 bg-red-600 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-red-700 z-50 font-bold border-2 border-white">
+  ▶ RUN PROTOTYPE DEMO
+</button>
       <div className="flex flex-row gap-4 flex-grow min-h-0">
         <WarehouseMap robots={robots} />
-        <TaskQueue 
-          liveTasks={liveTasks} 
-          onOpenHistory={() => setIsHistoryModalOpen(true)}
-          onOpenDispatch={() => setIsModalOpen(true)}
-        />
+        <div className='flex flex-col w-1/2 gap-4'>
+          <TaskQueue 
+            liveTasks={liveTasks} 
+            onOpenHistory={() => setIsHistoryModalOpen(true)}
+            onOpenDispatch={() => setIsModalOpen(true)}
+          />
+          <RobotStatus robots={robots} />
+        </div>
       </div>
-      <RobotStatus robots={robots} />
 
       {isModalOpen && (
         <DispatchModal 

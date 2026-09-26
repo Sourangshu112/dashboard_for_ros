@@ -2,7 +2,7 @@ import { getStatusBadge } from '../utils';
 
 export default function TaskQueue({ liveTasks, onOpenHistory, onOpenDispatch }) {
   return (
-    <div className="w-1/2 bg-white rounded-xl shadow-md border border-slate-200 flex flex-col overflow-hidden">
+    <div className="w-full h-full bg-white rounded-xl shadow-md border border-slate-200 flex flex-col overflow-hidden">
       <div className="bg-slate-800 text-white p-4 flex flex-col gap-3">
         <div className="flex justify-between items-center">
           <h2 className="font-semibold text-lg">Task Queue & Bids</h2>

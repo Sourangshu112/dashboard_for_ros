@@ -13,7 +13,7 @@ export default function RobotStatus({ robots }) {
         {robotList.length === 0 ? (
           <div className="text-sm text-slate-400 text-center mt-2">No robots connected</div>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {robotList.map((robot) => (
               <div key={`status-${robot.id}`} className="flex justify-between items-center p-3 bg-slate-50 border border-slate-100 rounded-lg">
                 <div className="flex items-center gap-3">
@@ -22,7 +22,7 @@ export default function RobotStatus({ robots }) {
                 </div>
                 <div className="flex flex-col items-end">
                   <span className={`text-sm font-bold ${getBatteryColor(robot.battery)}`}>
-                    {robot.battery}%
+                    {Math.round(robot.battery)}%
                   </span>
                   <span className={`text-[10px] font-bold uppercase tracking-wider ${robot.is_busy ? 'text-blue-500' : 'text-slate-400'}`}>
                     {robot.is_busy ? `BUSY: ${robot.current_task_id}` : 'FREE'}

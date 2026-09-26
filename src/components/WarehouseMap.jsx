@@ -59,7 +59,7 @@ export default function WarehouseMap({ robots }) {
           ctx.lineJoin = 'round';
           ctx.lineCap = 'round';
           
-          ctx.moveTo(mapX(robot.x), mapY(robot.y));
+          ctx.moveTo(mapX(robot.path[0][0]), mapY(robot.path[0][1]));
           robot.path.forEach(pt => ctx.lineTo(mapX(pt[0]), mapY(pt[1])));
           ctx.stroke(); 
 
