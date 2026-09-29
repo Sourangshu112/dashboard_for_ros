@@ -47,9 +47,9 @@ export default function TaskQueue({ liveTasks, onOpenHistory, onOpenDispatch }) 
                       </span>
                     )}
                   </div>
-                  <span className={`px-1.5 py-0.5 rounded-full text-[9px] font-bold uppercase ${getStatusBadge(task.status)}`}>
+                  {/* <span className={`px-1.5 py-0.5 rounded-full text-[9px] font-bold uppercase ${getStatusBadge(task.status)}`}>
                     {task.status}
-                  </span>
+                  </span> */}
                 </div>
                   
                 <div className="flex items-center justify-between text-[11px] text-slate-600 bg-slate-50 p-1.5 rounded border border-slate-100">
@@ -58,14 +58,14 @@ export default function TaskQueue({ liveTasks, onOpenHistory, onOpenDispatch }) 
                   <span className="font-semibold text-slate-700 truncate">{task.drop}</span>
                 </div>
                   
-                <div className="border-t border-slate-100 pt-1.5">
+                {/* <div className="border-t border-slate-100 pt-1.5">
                   <div className="text-[9px] font-bold uppercase text-slate-400 mb-1 flex justify-between items-center">
                     <span>{task.assignedTo ? 'Winner' : 'Waiting'}</span>
                     {task.assignedTo && (
                       <span className="text-blue-600 font-bold">{task.assignedTo}</span>
                     )}
                   </div>
-                </div>
+                </div> */}
               </div>
             ))}
           </div>

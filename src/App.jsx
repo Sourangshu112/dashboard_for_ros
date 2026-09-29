@@ -7,7 +7,7 @@ import RobotStatus from './components/RobotStatus';
 import DispatchModal from './components/DispatchModal';
 import HistoryModal from './components/HistoryModal';
 
-const socket = io('http://localhost:5000', { transports: ['websocket', 'polling'] });
+const socket = io('http://localhost:5000', { transports: ['websocket'] });
 
 export default function FleetDashboard() {
   const [robots, setRobots] = useState({});
@@ -134,14 +134,6 @@ export default function FleetDashboard() {
 
   return (
     <div className="flex flex-col h-screen bg-slate-100 p-4 gap-4 font-sans">
-      <button onClick={() => {
-        if(window.confirm("Initiate Hardcoded Collision Reroute Demo?")) {
-          socket.emit('trigger_sih_prototype');
-          }
-       }}
-      className="absolute top-4 right-4 bg-red-600 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-red-700 z-50 font-bold border-2 border-white">
-  ▶ RUN PROTOTYPE DEMO
-</button>
       <div className="flex flex-row gap-4 flex-grow min-h-0">
         <WarehouseMap robots={robots} />
         <div className='flex flex-col w-1/2 gap-4'>

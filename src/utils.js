@@ -8,14 +8,16 @@ export const LOCATION_MAP = {
   'Pickup B': [1.5, 3.0],
   'Pickup C': [9.5, 21.0],
   'Pickup D': [10.5, 9.0],
-  'Pickup E': [11.0, -5.0],
-  'Pickup F': [3.0, -13.0],
-  'Drop A': [-9.0, -1.0],
-  'Drop B': [-9.0, -6.0],
-  'Drop C': [-9.0, -11.0],
-  'Drop D': [-9.0, -16.0],
-  'Drop E': [-2.0, -21.0],
-  'Drop F': [6.0, -23.0]
+  'Pickup E': [10.0, 5.5],
+  'Drop A' : [11.0, -5.0],
+  'Drop B' : [3.0, -13.0],
+  'Drop C' : [-11.5, 9.0],
+  'Drop D': [-9.0, -1.0],
+  'Drop E': [-9.0, -6.0],
+  'Drop F': [-9.0, -11.0],
+  'Drop G': [-9.0, -16.0],
+  'Drop H': [-2.0, -21.0],
+  'Drop I': [6.0, -23.0],
 };
 
 export const generateRandomColor = () => {

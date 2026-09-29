@@ -12,13 +12,19 @@ export default function DispatchModal({ onClose, socket, setTasks }) {
     e.preventDefault();
     const newTaskId = `TSK-${Math.floor(1000 + Math.random() * 9000)}`;
 
+    // Automatically generate the "A->G" route string for the backend intercept
+    const pickupLetter = taskForm.pickup.replace('Pickup ', '');
+    const dropLetter = taskForm.drop.replace('Drop ', '');
+    const routeString = `${pickupLetter}->${dropLetter}`;
+
     const taskData = {
       task_id: newTaskId,
       pickup: LOCATION_MAP[taskForm.pickup],
       drop: LOCATION_MAP[taskForm.drop],
       pickup_name: taskForm.pickup,
       drop_name: taskForm.drop,
-      priority: taskForm.priority
+      priority: taskForm.priority,
+      route: routeString // <-- This triggers the specific robot override in Python
     };
     
     socket.emit('issue_task', taskData);
@@ -54,12 +60,9 @@ export default function DispatchModal({ onClose, socket, setTasks }) {
 
         <form onSubmit={handleSubmitTask} className="p-6 space-y-6">
           
-          {/* Route Selection with Timeline UI */}
           <div className="relative pl-7 space-y-5">
-            {/* Vertical Connecting Line */}
             <div className="absolute left-[11px] top-5 bottom-5 w-0.5 bg-slate-200 rounded-full"></div>
             
-            {/* Pickup Node */}
             <div className="relative">
               <div className="absolute -left-[27px] top-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full border-[3px] border-blue-500 bg-white z-10 shadow-sm"></div>
               <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Pickup Location</label>
@@ -74,12 +77,10 @@ export default function DispatchModal({ onClose, socket, setTasks }) {
                   <option value="Pickup C">Pickup C</option>
                   <option value="Pickup D">Pickup D</option>
                   <option value="Pickup E">Pickup E</option>
-                  <option value="Pickup F">Pickup F</option>
                 </optgroup>
               </select>
             </div>
 
-            {/* Drop Node */}
             <div className="relative">
               <div className="absolute -left-[27px] top-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full border-[3px] border-emerald-500 bg-white z-10 shadow-sm"></div>
               <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Drop / Charge Location</label>
@@ -95,17 +96,13 @@ export default function DispatchModal({ onClose, socket, setTasks }) {
                   <option value="Drop D">Drop D</option>
                   <option value="Drop E">Drop E</option>
                   <option value="Drop F">Drop F</option>
-                </optgroup>
-                <optgroup label="Charging Stations">
-                  <option value="Charge A">Charge A</option>
-                  <option value="Charge B">Charge B</option>
-                  <option value="Charge C">Charge C</option>
+                  <option value="Drop G">Drop G</option>
+                  <option value="Drop H">Drop H</option>
                 </optgroup>
               </select>
             </div>
           </div>
 
-          {/* Priority Toggle */}
           <div className="flex items-center justify-between p-4 bg-slate-50 rounded-xl border border-slate-100">
             <div className="flex flex-col">
               <span className="text-sm font-bold text-slate-700">Priority Dispatch</span>
@@ -122,7 +119,6 @@ export default function DispatchModal({ onClose, socket, setTasks }) {
             </label>
           </div>
 
-          {/* Action Button matching the green UI standard */}
           <button 
             type="submit" 
             className="w-full py-3.5 mt-2 bg-[#10b981] hover:bg-[#059669] text-white text-sm font-bold rounded-xl shadow-lg shadow-emerald-500/30 transition-all active:scale-[0.98] flex justify-center items-center gap-2"
